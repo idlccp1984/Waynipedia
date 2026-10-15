@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Noto Serif TC', 'Songti TC', 'Source Han Serif TC', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom scrollbars for timeline and TOC */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.5);
+}
+
+/* 3D Book Simulation Utilities */
+.perspective-container {
+  perspective: 1400px;
+}
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-1200 {
+  perspective: 1200px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* CSS 3D 自動緩慢旋轉動畫：滑鼠懸停時自動暫停 */
+@keyframes bookSlowRotate3D {
+  0% {
+    transform: rotateY(-36deg) rotateX(4deg);
+  }
+  50% {
+    transform: rotateY(18deg) rotateX(4deg);
+  }
+  100% {
+    transform: rotateY(-36deg) rotateX(4deg);
+  }
+}
+
+.animate-book-3d {
+  animation: bookSlowRotate3D 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: center center;
+}
+
+.animate-book-3d:hover {
+  animation-play-state: paused !important;
+}
+
+/* 180度完整雙面旋轉動畫：從正面到書脊到背面 */
+@keyframes bookRotate180 {
+  0% {
+    transform: rotateY(0deg) rotateX(2deg);
+  }
+  25% {
+    transform: rotateY(90deg) rotateX(4deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(0deg);
+  }
+  75% {
+    transform: rotateY(90deg) rotateX(4deg);
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(2deg);
+  }
+}
+
+.animate-book-180 {
+  animation: bookRotate180 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: center center;
+}
+
+.animate-book-180:hover {
+  animation-play-state: paused !important;
+}
+
+/* 卡牌樣式與金屬流光動畫 */
+@keyframes cardShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.card-shimmer {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+.card-shimmer:hover {
+  animation: cardShimmer 2.5s infinite;
+}

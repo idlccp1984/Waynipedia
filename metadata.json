@@ -1,0 +1,8 @@
+{
+  "name": "Waynipedia 蔣萬安百科",
+  "description": "收錄台北市長蔣萬安相關市政決策、重大工程、選戰攻防、議題專欄、歷史上的今天與書籍卡牌典藏之現代化百科全書。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
